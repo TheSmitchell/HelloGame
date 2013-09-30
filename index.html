@@ -4,11 +4,16 @@
   <script src="./HelloGame.js"></script>
   <head>
     <style type="text/css">
+      #help {
+	position: absolute;
+	top: 0px;
+	left: 680px;
+      }
       #viewport {
 	outline-color: transparent;
 	position: relative;
-        width:320px;
-	height:480px;
+        width:640px;
+	height:704px;
 	border: 2px solid gray;
 	overflow:hidden;
       }
@@ -16,22 +21,22 @@
 	position: absolute;
 	left:0px;
 	top:0px;
-	width:320px;
-	height:480px;
+	width:640px;
+	height:704px;
 	background-color: #ababab;
+	display:block;
       }
       .bground {
 	position:absolute;
-	background-image: url("./sprites/16tiles2.png");
+	background-image: url("./sprites/tileA2.png");
 	left:0;
 	top:0;
-	height:16px;
-	width:16px;
+	height:32px;
+	width:32px;
 	display:block;
       }
       .fground {
 	position:absolute;
-	background-image: url("./sprites/16tiles2.png");
 	left:0;
 	top:0;
 	height:16px;
@@ -39,19 +44,20 @@
 	display:block;
       }
       .grassA {
-	background-position: -16px 0px;
+	background-position: 0px 0px;
       }
       .tree {
+	background-image: url("./sprites/16tiles2.png");
 	width:64px;
 	height:80px;
       }
       .tree.top.A {
-	height:32px;
+	height:48px;
 	background-position: -48px -48px;
       }
       .tree.mid.A {
-	height:32px;
-	background-position: -48px -80px;
+	height:16px;
+	background-position: -48px -96px;
       }
       .tree.bot.A {
 	height:16px;
@@ -59,47 +65,49 @@
       }
       .sprites {
 	position:absolute;
-	background-image: url("./sprites/chars.png");
+	background-image: url("./sprites/vx_chara01_a.png");
 	left:0px;
 	top:0px;
-	height:16px;
-	width:16px;
+	width:32px;
+	height:48px;
 	display:block;
       }
       .dude.down.A {
-	background-position: -11px -267px;
+	background-position: 0px 0px;
       }
       .dude.down.B {
-	background-position: -40px -268px;
+	background-position: -64px 0px;
       }
       .dude.up.A {
-	background-position: -9px -291px;
+	background-position: 0px -144px;
       }
       .dude.up.B {
-	background-position: -39px -290px;
+	background-position: -64px -144px;
       }
-      .dude.left.A,.dude.right.A {
-	background-position: -13px -313px;
+      .dude.left.A {
+	background-position: 0px -48px;
       }
-      .dude.left.B,.dude.right.B {
-	background-position: -41px -314px;
+      .dude.left.B {
+	background-position: -64px -48px;
       }
-      .right.A,.right.B {
-	transform: scaleX(-1);
+      .dude.right.A {
+	background-position: 0px -96px;
+      }
+      .dude.right.B {
+	background-position: -64px -96px;
       }
     </style>
   </head>
   <body>
     <div id="viewport"><div id="canvas"></div></div>
-    <div style="position:absolute;left:400px;top:0px;">
-    <h1>HelloGame</h1>
+    <div id="help">
+    <h1>HelloGame v.dirt</h1>
     <p>There was a rumor that you can build games, like, 2D Pixel Adventure RPGs. And then we found a tilset from FF3, and it was all downhill from there.
     <h2>What... is this...</h2>
-    <p>This is a random forest! You can navigate it with your impossibly small avitar straight out of <a href="http://www.spriters-resource.com/nes/ff3/">the NES era</a>. Trees et al courtesy of <a href="http://www.lorestrome.com/pixel_archive/main.htm">Lorestrome Pixel Archive</a>.
+    <p>This is a random forest! With a shiny, blond avatar hero! (S)he has no weapons to speak of and desperately wants to leave this confusing land.
     <h2>Controls:</h2>
-    <p>You can control the tiny 16x16 pixel blue smudge in the top left corner with the Arrow Keys on your Keyboard.
-    <p>We do not condone stroking the screen in an effort to make things happen. Because nothing will happen.
-    <p>Hint: You <em>can</em> walk behind trees.
+    <p>You can control the avatar located in the upper-left corner with Arrow Keys on your Keyboard. We do not condone stroking the screen in an effort to make things happen. Because nothing will happen.
+    <p><strong>Hint</strong> You can walk behind trees!
     <dl><dt>Move Up</dt><dd>Press Up Arrow</dd>
       <dt>Move Down</dt><dd>Press Down Arrow</dd>
       <dt>Move Left</dt><dd>Press Left Arrow</dd>
@@ -110,6 +118,9 @@
     <h2>Troubleshooting</h2>
     <dl><dt>When I press the Arrow Keys, something else happens!</dt><dd>Click on the forest! This should - hopefully, return focus to the game</dd>
       <dt>I'm running [Not FireFox] and [some thing] doesn't look right!</dt><dd>That's unfortunate.</dd></dl>
+    <h2>Credits</h2>
+    <p>Sharp looking avatars and grass were found on <a href="http://www.tekepon.net/fsm/">tekepon.net</a>.
+    <p>Trees were shared by <a href="http://www.lorestrome.com/pixel_archive/main.htm">Lorestrome Pixel Archive</a>.
     </div>
   </body>
 </html>

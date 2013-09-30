@@ -4,13 +4,17 @@ var treeMatrix;
 
 var treeRandomize = function ()
 {
+  var cols = $('#canvas').width() / 16;
+  var rows = $('#canvas').height() / 16;
   treeMatrix = new Array();
 
-  var num = Math.ceil(Math.random() * 100);
+  var num = Math.floor((Math.random() * 100)+(Math.random() * 100));
 
   for (i=0;i<num;++i) {
-    var x = Math.floor(Math.random() * 100 % 20);
-    var y = Math.floor(Math.random() * 100 % 30);
+    do {
+      x = Math.floor(Math.random() * 100 % (cols+10)) - 5;
+      y = Math.floor(Math.random() * 100 % (rows+10)) - 5;
+    } while ( x < 8 && y < 8)
     treeMatrix.push([x,y]);
   }
 
@@ -43,7 +47,10 @@ $(document).ready( function () {
 var insertUser = function(who)
 {
   var canvas = $('#canvas');
-  canvas.append('<div id="user" class="sprites ' + who + ' down A"></div>');
+  var ele = $('<div id="user" class="sprites ' + who + ' down A"></div>');
+  ele.css('left',32);
+  ele.css('top',32);
+  canvas.append(ele);
   user = $('#user');
 
 }
@@ -51,8 +58,8 @@ var insertUser = function(who)
 var insertBackground = function()
 {
   var canvas = $('#canvas');
-  var wide = 16;
-  var high = 16;
+  var wide = 32;
+  var high = 32;
   var tileW = canvas.width()/wide;
   var tileH = canvas.height()/high;
 
@@ -67,7 +74,7 @@ var insertBackground = function()
     var treeMid = $('<div class="bground tree mid A"></div>');
     var treeBot = $('<div class="bground tree bot A"></div>');
     treeMid.css('left',treeMatrix[i][0]*16);
-    treeMid.css('top',treeMatrix[i][1]*16 + 16*2);
+    treeMid.css('top',treeMatrix[i][1]*16 + 16*3);
     treeBot.css('left',treeMatrix[i][0]*16);
     treeBot.css('top',treeMatrix[i][1]*16 + 16*4);
     canvas.append(treeMid);
@@ -79,7 +86,7 @@ var insertForeground = function()
 {
   var canvas = $('#canvas');
   for (i=0;i<treeMatrix.length;++i) {
-    var treeTop = $('<div class="fground tree top A"><div>');
+    var treeTop = $('<div class="fground tree top A"></div>');
     treeTop.css('left',treeMatrix[i][0]*16);
     treeTop.css('top',treeMatrix[i][1]*16);
     canvas.append(treeTop);
@@ -113,25 +120,44 @@ var moveUser = function (dir)
     case 40: break;
   }
 
-  var pos = (left?'left':'top');
-  var curPos = (left?user.position().left:user.position().top);
-  var curAlt = (left?user.position().top:user.position().left);0
-  var minPos = 0;
-  var maxPos = (left?$('#canvas').width():$('#canvas').height()) - 16;
-  var newPos = Math.max(Math.min(curPos + dist,maxPos),minPos);
-  var trees = $('.tree.mid');
-  for (i=0;i<trees.length;++i) {
-    var tree = $(trees[i]);
-    var treePos = (left?tree.position().left:tree.position().top);
-    var treeAlt = (left?tree.position().top:tree.position().left);
-    var treeLen = (left?tree.width():tree.height());
-    var treeLAl = (left?tree.height():tree.width());
-    console.log('treePos: ' + treePos + ' x ' + (treePos+treeLen));
-    if ((newPos+8 > treePos && newPos+8 < (treePos + treeLen)) && (curAlt+8 > treeAlt && curAlt+8 < (treeAlt + treeLAl))) {
-      return;
+  var cL = user.position().left;
+  var cT = user.position().top;
+  var nL = cL;
+  var nT = cT;
+
+  if (left) {
+    nL = Math.max(Math.min(nL+dist, $('#canvas').width() - user.width()), 0);
+  } else {
+    nT = Math.max(Math.min(nT+dist, $('#canvas').height() - user.height()),0);
+  }
+
+  
+  if (!collides({left: nL, top: nT},user.width(),user.height())) {
+    user.css('left',nL);
+    user.css('top',nT);
+  }
+}
+
+var collides = function (newPos,width,height)
+{
+  var pL = newPos.left;
+  var pT = newPos.top + (height*0.5);
+  var pR = newPos.left + width;
+  var pB = newPos.top + height;
+
+  var blocks = $('.tree.mid');
+  for (i=0;i<blocks.length;++i) {
+    var block = $(blocks[i]);
+    var bT = block.position().top;
+    var bL = block.position().left;
+    var bR = bL + block.width();
+    var bB = bT + block.height();
+    if ((pL < bR && pR > bL) && (pT < bB && pB > bT))
+    {
+      return true;
     }
   }
-  user.css(pos,newPos);
+  return false;
 }
 
 var toggleUser = function (dir) 
