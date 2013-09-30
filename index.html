@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="./HelloGame.js"></script>
+  <head>
+    <style type="text/css">
+      #viewport {
+	outline-color: transparent;
+	position: relative;
+        width:320px;
+	height:480px;
+	border: 2px solid gray;
+	overflow:hidden;
+      }
+      #canvas {
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:320px;
+	height:480px;
+	background-color: #ababab;
+      }
+      .bground {
+	position:absolute;
+	background-image: url("./sprites/16tiles2.png");
+	left:0;
+	top:0;
+	height:16px;
+	width:16px;
+	display:block;
+      }
+      .fground {
+	position:absolute;
+	background-image: url("./sprites/16tiles2.png");
+	left:0;
+	top:0;
+	height:16px;
+	width:16px;
+	display:block;
+      }
+      .grassA {
+	background-position: -16px 0px;
+      }
+      .tree {
+	width:64px;
+	height:80px;
+      }
+      .tree.top.A {
+	height:32px;
+	background-position: -48px -48px;
+      }
+      .tree.mid.A {
+	height:32px;
+	background-position: -48px -80px;
+      }
+      .tree.bot.A {
+	height:16px;
+	background-position: -48px -112px;
+      }
+      .sprites {
+	position:absolute;
+	background-image: url("./sprites/chars.png");
+	left:0px;
+	top:0px;
+	height:16px;
+	width:16px;
+	display:block;
+      }
+      .dude.down.A {
+	background-position: -11px -267px;
+      }
+      .dude.down.B {
+	background-position: -40px -268px;
+      }
+      .dude.up.A {
+	background-position: -9px -291px;
+      }
+      .dude.up.B {
+	background-position: -39px -290px;
+      }
+      .dude.left.A,.dude.right.A {
+	background-position: -13px -313px;
+      }
+      .dude.left.B,.dude.right.B {
+	background-position: -41px -314px;
+      }
+      .right.A,.right.B {
+	transform: scaleX(-1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewport"><div id="canvas"></div></div>
+  </body>
+</html>
