@@ -51,25 +51,23 @@ var insertUser = function(who)
 var insertBackground = function()
 {
   var canvas = $('#canvas');
-  var wide = $('<div class="bground"></div>').width();
-  var high = $('<div class="bground"></div>').height();
-  var halfW = wide/2;
-  var halfH = high/2;
+  var wide = 16;
+  var high = 16;
   var tileW = canvas.width()/wide;
   var tileH = canvas.height()/high;
 
-  for (x=0;x<=tileW+1;++x) { for (y=0;y<=tileH+1;y++) {
+  for (x=0;x<tileW;++x) { for (y=0;y<tileH;y++) {
     var ele = $('<div class="bground grassA"></div>');
-    ele.css('left',(x*ele.width()));
-    ele.css('top',(y*ele.height()));
+    ele.css('left',(x*wide));
+    ele.css('top',(y*high));
     canvas.append(ele);
   }}
   
   for (i=0;i<treeMatrix.length;++i) {
     var treeMid = $('<div class="bground tree mid A"></div>');
+    var treeBot = $('<div class="bground tree bot A"></div>');
     treeMid.css('left',treeMatrix[i][0]*16);
     treeMid.css('top',treeMatrix[i][1]*16 + 16*2);
-    var treeBot = $('<div class="bground tree bot A"></div>');
     treeBot.css('left',treeMatrix[i][0]*16);
     treeBot.css('top',treeMatrix[i][1]*16 + 16*4);
     canvas.append(treeMid);
