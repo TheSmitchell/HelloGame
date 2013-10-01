@@ -2,6 +2,11 @@ var user;
 var all = "left up right down A B";
 var treeMatrix;
 
+var left = 37;
+var up = 38;
+var right = 39;
+var down = 40;
+
 var treeRandomize = function ()
 {
   var cols = $('#canvas').width() / 16;
@@ -36,13 +41,30 @@ var treeRandomize = function ()
 }
 
 $(document).ready( function () {
+  showHelp();
   treeRandomize();
   insertBackground();
   insertUser('dude');
   insertForeground();
 
+  $('#up').click(function (e) { doMove(up); });
+  $('#left').click(function (e) { doMove(left); });
+  $('#down').click(function (e) { doMove(down); });
+  $('#right').click(function (e) { doMove(right); });
+  $('#F5').click(function(e) {window.location = window.location;} );
+
+  $('.arrow').button();
   $('#viewport').attr('tabindex',-1).focus().keydown(keyHandler);
 });
+
+var showHelp = function ()
+{
+  $('#up').button().button("option","icons", {primary: "ui-icon-arrowthick-1-n"}).button({ text: false }).attr('title','Move up');
+  $('#left').button().button("option","icons", {primary: "ui-icon-arrowthick-1-w"}).button({ text: false }).attr('title','Move left');
+  $('#down').button().button("option","icons", {primary: "ui-icon-arrowthick-1-s"}).button({ text: false }).attr('title','Move down');
+  $('#right').button().button("option","icons", {primary: "ui-icon-arrowthick-1-e"}).button({ text: false }).attr('title','Move right');
+  $('#F5').button().attr('title','Generate a new forest');
+}
 
 var insertUser = function(who)
 {
@@ -105,8 +127,14 @@ var keyHandler = function(event)
     default: return;
   }
 
-  moveUser(event.which);
-  toggleUser(event.which);
+  doMove(event.which);
+
+}
+
+var doMove = function (dir)
+{
+  moveUser(dir);
+  toggleUser(dir);
 }
 
 var moveUser = function (dir)
