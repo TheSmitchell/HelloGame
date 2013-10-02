@@ -1,0 +1,81 @@
+body {
+  font-family: 'Bitstream Vera Serif','Trebuchet MS',Arial;
+  font-size: 14px;
+  text-align:center;
+  background-image: url('mint-choc/images/nkdflxs.png');
+  color:#fff;
+}
+a:link,a:hover,a:visited {
+  color:#9BCC60;
+}
+h1 {
+  font-size: 28px;
+  color:#9BCC60;
+} 
+h2 {
+  font-size: 22px;
+  color:#566F89;
+}
+h3 {
+  font-size: 18px;
+  color:#8E8055;
+}
+h4 {
+  font-size: 16px;
+  color:#E08069;
+}
+h5 {
+  font-size: 14px;
+  color:#E08069;
+}
+h6 {
+  font-size: 12px;
+  color:#E08069;
+}
+#wrapper {
+  margin: 0 auto;
+  padding: 20px;
+  width: 1080px;
+  text-align:left;
+  background-image: none;
+  background-color: rgba(28,22,13,0.8);
+  color:#fff;
+}
+#help {
+  margin-left:20px;
+  vertical-align:top;
+}
+.arrow {
+  width:48px;
+  height:48px;
+  padding: 0;
+  margin: 0;
+  vertical-align:middle;
+}
+.arrow span.ui-icon {
+  float: left;
+  vertical-align:middle;
+}
+#F5{
+  padding: 0;
+  margin: 0;
+  width:48px;
+  height:48px;
+  vertical-align:middle;
+  display:block;
+}
+#F5 span.ui-button-text {
+  padding-top:12px;
+  vertical-align:middle;
+  text-align:center;
+}
+#header {
+  width:100%;
+  text-align:center;
+}
+
+#footer {
+  font-size:x-small;
+  width:100%;
+  text-align:center;
+}
