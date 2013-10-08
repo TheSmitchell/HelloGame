@@ -4,200 +4,74 @@
     <link rel="stylesheet" href="css/mint-choc/jquery-ui.css" />
     <script src="js/jquery-1.9.1.js"></script>
     <script src="js/jquery-ui-1.10.3.custom.js"></script>
-  
-    <script src="./HelloGame.js"></script>
-    <style type="text/css">
-      body {
-	font-family: 'Bitstream Vera Serif','Trebuchet MS',Arial;
-	font-size: 14px;
-	text-align:center;
-	background-image: url('css/mint-choc/images/nkdflxs.png');
-	color:#fff;
-      }
-      a:link,a:hover,a:visited {
-	color:#9BCC60;
-      }
-      h1 {
-	font-size: 28px;
-	color:#9BCC60;
-      } 
-      h2 {
-	font-size: 22px;
-	color:#566F89;
-      }
-      h3 {
-	font-size: 18px;
-	color:#8E8055;
-      }
-      h4 {
-	font-size: 16px;
-	color:#E08069;
-      }
-      h5 {
-	font-size: 14px;
-	color:#E08069;
-      }
-      h6 {
-	font-size: 12px;
-	color:#E08069;
-      }
-      #wrapper {
-	margin: 0 auto;
-	padding: 20px;
-	width: 1080px; /* Replace the xxxx with the the width of your site (eg 800px)*/
-	text-align:left;
-	background-image: none;
-	background-color: rgba(28,22,13,0.8);
-	color:#fff;
-      }
-      #help {
-	margin-left:20px;
-	vertical-align:top;
-      }
-      #viewport {
-	outline-color: transparent;
-	position: relative;
-        width:640px;
-	height:704px;
-	border: 2px solid #8E7755;
-	overflow:hidden;
-      }
-      #canvas {
-	position: absolute;
-	left:0px;
-	top:0px;
-	width:640px;
-	height:704px;
-	background-color: #ababab;
-	display:block;
-      }
-      .bground {
-	position:absolute;
-	background-image: url("./sprites/TileA2.png");
-	left:0;
-	top:0;
-	height:32px;
-	width:32px;
-	display:block;
-      }
-      .fground {
-	position:absolute;
-	left:0;
-	top:0;
-	height:16px;
-	width:16px;
-	display:block;
-      }
-      .grassA {
-	background-position: 0px 0px;
-      }
-      .tree {
-	background-image: url("./sprites/16tiles2.png");
-	width:64px;
-	height:80px;
-      }
-      .tree.top.A {
-	height:48px;
-	background-position: -48px -48px;
-      }
-      .tree.mid.A {
-	height:16px;
-	background-position: -48px -96px;
-      }
-      .tree.bot.A {
-	height:16px;
-	background-position: -48px -112px;
-      }
-      .sprites {
-	position:absolute;
-	background-image: url("./sprites/vx_chara01_a.png");
-	left:0px;
-	top:0px;
-	width:32px;
-	height:48px;
-	display:block;
-      }
-      .dude.down.A {
-	background-position: 0px 0px;
-      }
-      .dude.down.B {
-	background-position: -64px 0px;
-      }
-      .dude.up.A {
-	background-position: 0px -144px;
-      }
-      .dude.up.B {
-	background-position: -64px -144px;
-      }
-      .dude.left.A {
-	background-position: 0px -48px;
-      }
-      .dude.left.B {
-	background-position: -64px -48px;
-      }
-      .dude.right.A {
-	background-position: 0px -96px;
-      }
-      .dude.right.B {
-	background-position: -64px -96px;
-      }
-      .arrow {
-	width:48px;
-	height:48px;
-	padding: 0;
-	margin: 0;
-	vertical-align:middle;
-      }
-      .arrow span.ui-icon {
-	float: left;
-	vertical-align:middle;
-      }
-      #F5{
-	padding: 0;
-	margin: 0;
-	width:48px;
-	height:48px;
-	vertical-align:middle;
-	display:block;
-      }
-      #F5 span.ui-button-text {
-	padding-top:12px;
-	vertical-align:middle;
-	text-align:center;
-      }
-      #header {
-	width:100%;
-	text-align:center;
-      }
 
-      #footer {
-	font-size:x-small;
-	width:100%;
-	text-align:center;
-      }
-    </style>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/game.css" />
+    <script src="./HelloGame.js"></script>
   </head>
   <body>
-    <div id="header"><h1>Hello, Game</h1></div><div id="wrapper">
-    <table cellpadding="0" cellspacing="0"><tr><td>
-	  <div id="viewport"><div id="canvas"></div></div>
-    </td><td valign="top">
-    <div id="help">
-      <p>Welcome intrepid explorer! You are invited to wander the random forests of Hello, Game! Using naught but a keyboard and some fancy finagling, guide your Hero through the trees and see just "how far" you can get.
-      <h2>Controls</h2>
-      <table width="100%">
-	<tr><td align="center" width="50%"><table><tr><td></td><td><span id="up" class="arrow"></span></td><td></td></tr>
-	    <tr><td><span id="left" class="arrow"></span></td><td><span id="down" class="arrow"></span></td><td><span id="right" class="arrow"></span></td></tr>
-      </table></td><td rowspan="2" valign="middle"><p style="text-align:center">Familiar Cartesian Steps!</td></tr>
-	<tr><td>&nbsp;</td></tr>
-	<tr><td valign="middle"><p style="text-align:center">Infinite Discovery!</td><td align="center" valign="middle"><span id="F5">F5</span></td></tr>
-      </table>
-      <h2>Troubleshooting</h2>
-      <h3>When I press the Arrow Keys, something <em>else</em> happens!</h3><p>Click on the forest! This should - hopefully, return focus to the game</p>
-      <h3>I'm running [Not FireFox] and [some thing] doesn't look right!</h3><p>That's unfortunate.</p>
+    <div id="test"></div>
+    <div id="header">
+      <h1>Hello, Game</h1>
     </div>
-    </td></table></div>
+    <div id="wrapper">
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <div id="viewport"><div id="canvas"></div></div>
+            </td><td valign="top">
+            <div id="help">
+              <p>Welcome intrepid explorer! You are invited to wander the random forests of Hello, Game! Using naught but a keyboard and some fancy finagling, guide your Hero through the trees and see just "how far" you can get.
+              <h2>Controls</h2>
+              <table width="100%">
+                <tr>
+                  <td align="center" width="50%">
+                    <table>
+                      <tr>
+                        <td></td>
+                        <td><span id="up" class="arrow"></span></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td><span id="left" class="arrow"></span></td>
+                        <td><span id="down" class="arrow"></span></td>
+                        <td><span id="right" class="arrow"></span></td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td rowspan="2" valign="middle"><p style="text-align:center">Familiar Cartesian Steps!</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td valign="middle"><p style="text-align:center">Infinite Discovery!</td>
+                  <td align="center" valign="middle"><span id="F5">F5</span></td>
+                </tr>
+              </table>
+              <h2>Troubleshooting</h2>
+              <h3>When I press the Arrow Keys, something <em>else</em> happens!</h3><p>Click on the forest! This should - hopefully, return focus to the game</p>
+              <h3>I'm running [Not FireFox] and [some thing] doesn't look right!</h3><p>That's unfortunate.</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
     <div style="clear:both;"><p></div>
-    <div id="footer"><a href="http://github.com/TheSmitchell/HelloGame">Hello, Game</a> - Version 0.1 "Dirt" - (c) Sarah Mitchell 2013<br/>Sprites and Tilesets from <a href="http://www.tekepon.net/fsm/">tekepon.net</a> and <a href="http://www.lorestrome.com/pixel_archive/main.htm">Lorestrome Pixel Archive</a></div>
+    <div id="footer">
+      <a href="http://github.com/TheSmitchell/HelloGame">Hello, Game</a> - Version 0.1 "Dirt" - (c) Sarah Mitchell 2013
+      <br/>
+      Sprites and Tilesets from <a href="http://www.tekepon.net/fsm/">tekepon.net</a> and <a href="http://www.lorestrome.com/pixel_archive/main.htm">Lorestrome Pixel Archive</a>
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12712949-3', 'thesmitchell.github.io');
+  ga('send', 'pageview');
+
+</script>
   </body>
 </html>

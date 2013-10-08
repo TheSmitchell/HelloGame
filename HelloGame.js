@@ -63,7 +63,17 @@ var showHelp = function ()
   $('#left').button().button("option","icons", {primary: "ui-icon-arrowthick-1-w"}).button({ text: false }).attr('title','Move left');
   $('#down').button().button("option","icons", {primary: "ui-icon-arrowthick-1-s"}).button({ text: false }).attr('title','Move down');
   $('#right').button().button("option","icons", {primary: "ui-icon-arrowthick-1-e"}).button({ text: false }).attr('title','Move right');
-  $('#F5').button().attr('title','Generate a new forest');
+  var f5 = 'F5';
+  var nav = navigator.platform;
+  if (nav.search(/[mM]ac/g) !== -1) {
+    f5 = '&#8984;+R';
+    var width = $('#test').html(f5).width();
+    $('#F5').css('width',width+'px');
+    $('#F5').css('padding-left','10px');
+    $('#F5').css('padding-right','10px');
+    console.log(f5);
+  }
+  $('#F5').button().html(f5).attr('title','Generate a new forest');
 }
 
 var insertUser = function(who)

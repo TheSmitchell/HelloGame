@@ -1,0 +1,87 @@
+#viewport {
+  outline-color: transparent;
+  position: relative;
+  width:640px;
+  height:704px;
+  border: 2px solid #8E7755;
+  overflow:hidden;
+}
+#canvas {
+  position: absolute;
+  left:0px;
+  top:0px;
+  width:640px;
+  height:704px;
+  background-color: #ababab;
+  display:block;
+}
+.bground {
+  position:absolute;
+  background-image: url("../sprites/TileA2.png");
+  left:0;
+  top:0;
+  height:32px;
+  width:32px;
+  display:block;
+}
+.fground {
+  position:absolute;
+  left:0;
+  top:0;
+  height:16px;
+  width:16px;
+  display:block;
+}
+.grassA {
+  background-position: 0px 0px;
+}
+.tree {
+  background-image: url("../sprites/16tiles2.png");
+  width:64px;
+  height:80px;
+}
+.tree.top.A {
+  height:48px;
+  background-position: -48px -48px;
+}
+.tree.mid.A {
+  height:16px;
+  background-position: -48px -96px;
+}
+.tree.bot.A {
+  height:16px;
+  background-position: -48px -112px;
+}
+.sprites {
+  position:absolute;
+  background-image: url("../sprites/vx_chara01_a.png");
+  left:0px;
+  top:0px;
+  width:32px;
+  height:48px;
+  display:block;
+}
+.dude.down.A {
+  background-position: 0px 0px;
+}
+.dude.down.B {
+  background-position: -64px 0px;
+}
+.dude.up.A {
+  background-position: 0px -144px;
+}
+.dude.up.B {
+  background-position: -64px -144px;
+}
+.dude.left.A {
+  background-position: 0px -48px;
+}
+.dude.left.B {
+  background-position: -64px -48px;
+}
+.dude.right.A {
+  background-position: 0px -96px;
+}
+.dude.right.B {
+  background-position: -64px -96px;
+}
